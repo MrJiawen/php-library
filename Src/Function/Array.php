@@ -1,6 +1,26 @@
 <?php
 
-function testArr()
+/** 查看元素是否都存在于数组中
+ * @param $value
+ * @param $array
+ * @return bool
+ */
+function array_value_exists($value,$array)
 {
-    echo "testArr";
+    return array_keys_exists($value,array_flip($value));
 }
+
+function array_keys_exists($value,$array)
+{
+    if(is_string($value)){
+        return array_key_exists($value,$array);
+    }elseif (is_array($value)){
+        foreach ($value as $val){
+            if(!array_key_exists($val,$array))
+                return false;
+        }
+        return true;
+    }
+    return false;
+}
+
