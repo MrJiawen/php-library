@@ -1,25 +1,25 @@
 {
-    "name": "mr-jiawen/php-libary",
-    "license":"MIT",
-    "authors": [
-        {
-            "name": "chenjiawen",
-            "email": "604989282@qq.com"
-        }
-    ],
-    "require": {
-      "gregwar/captcha": "1.*",
-      "ramsey/uuid": "^3.2",
-      "iscms/alisms-for-laravel": "0.0.1.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "CjwPhpLibary\\": ""
-        },
-	"files":[
-	    "Src/Function/Array.php",
-	    "Src/Function/String.php",
-	    "Src/Function/System.php"
-	]
+  "name": "mr-jiawen/php-libary",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "chenjiawen",
+      "email": "604989282@qq.com"
     }
+  ],
+  "require": {
+    "gregwar/captcha": "1.*",
+    "ramsey/uuid": "^3.2",
+    "iscms/alisms-for-laravel": "0.0.1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "CjwPhpLibary\\": ""
+    },
+    "files": [
+      "Src/Function/Array.php",
+      "Src/Function/String.php",
+      "Src/Function/System.php"
+    ]
+  }
 }
