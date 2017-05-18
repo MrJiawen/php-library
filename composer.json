@@ -8,6 +8,9 @@
         }
     ],
     "require": {
+      "gregwar/captcha": "1.*",
+      "ramsey/uuid": "^3.2",
+      "iscms/alisms-for-laravel": "0.0.1.*"
     },
     "autoload": {
         "psr-4": {
