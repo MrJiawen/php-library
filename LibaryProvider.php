@@ -13,7 +13,9 @@ class LibaryProvider extends ServiceProvider
      */
     public function boot()
     {
-
+        // 状态码的配置文件
+        $StatusConfig = realpath(__DIR__ . '/Src/StatusCode/StatusConfig.php');
+        $this->publishes([$StatusConfig => config_path('statusCode.php')]);
     }
 
     /**
@@ -25,5 +27,6 @@ class LibaryProvider extends ServiceProvider
     {
         // TODO: Implement register() method.
         $this->app->singleton(Src\Tool\CommonTool::class,Src\Tool\CommonTool::class);
+        $this->app->singleton(Src\Tool\CurlRequest::class,Src\Tool\CurlRequest::class);
     }
 }

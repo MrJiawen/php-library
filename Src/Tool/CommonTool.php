@@ -71,8 +71,29 @@ class CommonTool
     {
         $temp = Uuid::uuid4();
         $uuid = $temp->getHex();#uuid
+
         return $uuid;
     }
 
+    /**cookie的生成器
+     * @param $key
+     * @param $value
+     */
+    public function cookieGenerator($key, $value)
+    {
+        setcookie($key, $value, time() + 9999999999, '/');
+    }
 
+    /** cookie的验证器
+     * @param $key
+     * @param $value
+     * @return bool
+     */
+    public function cookieVerification($key, $value)
+    {
+        if (!empty($_COOKIE[$key]) && ($value == $_COOKIE[$key]))
+            return true;
+
+        return false;
+    }
 }
