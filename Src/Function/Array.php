@@ -7,7 +7,7 @@
  */
 function array_value_exists($value, $array)
 {
-    return array_keys_exists($value, array_flip($value));
+    return array_keys_exists($value, array_flip($array));
 }
 
 /**  查看元素是否存在于数组键中
