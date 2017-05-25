@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibary\Src\Service;
+namespace CjwPhpLibary\Src\Service\IpAddress;
 
 use CjwPhpLibary\Src\Tool\CurlRequest;
 
