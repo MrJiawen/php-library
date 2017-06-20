@@ -12,11 +12,12 @@ use Ramsey\Uuid\Uuid;
  */
 class CommonTool
 {
-    protected $identifyingCode = 'identifying_code';
+    protected $identifyingCode;
 
     public function __construct()
     {
-
+        $image_code = config('phpLibrary.image_code');
+        $this->identifyingCode = empty($image_code) ? 'image_code' : $image_code;
     }
 
     /** 验证码的生成器
@@ -24,7 +25,7 @@ class CommonTool
      * @param int $height
      * @param null $filename
      */
-    public function identifyingCodeGenerator($width = 100, $height = 40, $filename = null)
+    public function imageCodeGenerator($width = 100, $height = 40, $filename = null)
     {
         $phrase = new PhraseBuilder();
         $code = $phrase->build(4);
@@ -57,7 +58,7 @@ class CommonTool
      * @param $identifyingCode
      * @return bool
      */
-    public function identifyingCodeVerification($identifyingCode)
+    public function imageCodeVerification($identifyingCode)
     {
         $sysIdentifying = \Session::get($this->identifyingCode);
         if ($identifyingCode == null) return false;
