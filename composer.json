@@ -1,5 +1,5 @@
 {
-  "name": "mr-jiawen/php-libary",
+  "name": "mr-jiawen/php-library",
   "license": "MIT",
   "authors": [
     {
@@ -9,11 +9,12 @@
   ],
   "require": {
     "gregwar/captcha": "1.*",
-    "ramsey/uuid": "^3.2"
+    "ramsey/uuid": "^3.2",
+    "predis/predis": "~1.0"
   },
   "autoload": {
     "psr-4": {
-      "CjwPhpLibary\\": ""
+      "CjwLibrary\\": ""
     },
     "files": [
       "Src/Function/Array.php",

@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibary\Src\Tool;
+namespace CjwPhpLibrary\Src\Tool;
 
 class Page
 {

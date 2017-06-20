@@ -1,8 +1,8 @@
 <?php
 
-namespace CjwPhpLibary\Src\Service\IpAddress;
+namespace CjwPhpLibrary\Src\Service\IpAddress;
 
-use CjwPhpLibary\Src\Tool\CurlRequest;
+use CjwPhpLibrary\Src\Tool\CurlRequest;
 
 /** ip地址查询类别
  * Class IpAddress

@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibary\Src\Tool;
+namespace CjwPhpLibrary\Src\Tool;
 
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;

@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibary\Src\Tool;
+namespace CjwPhpLibrary\Src\Tool;
 
 class CurlRequest
 {
@@ -21,6 +21,10 @@ class CurlRequest
 
         //2. 使用cookie时候,还有LLs证书认证过期时间,必须设置时区
         date_default_timezone_set('Asia/Shanghai');
+
+        //3. 设置cookie存放的文件夹路径
+        if(!empty(config('phpLibrary.curl_request.cookie_dir')))
+        $this->cookieDir =  config('phpLibrary.curl_request.cookie_dir');
     }
 
     //对请求的初始化

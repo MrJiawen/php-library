@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibary;
+namespace CjwPhpLibrary;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -17,6 +17,11 @@ class LibaryProvider extends ServiceProvider
         $StatusConfig = realpath(__DIR__ . '/Src/Config/StatusConfig.php');
         $this->publishes([$StatusConfig => config_path('statusCode.php')]);
 
+        //  项目库的配置文件
+        $StatusConfig = realpath(__DIR__ . '/Src/Config/Php_Libary.php');
+        $this->publishes([$StatusConfig => config_path('phpLibary.php')]);
+
+        // 阿里云的邮件推送配置文件
         $aliyunPushEmailService = realpath(__DIR__ . '/Src/Service/AliyunPhpEmail/Config/aliyunPushEmailService.php');
         $this->publishes([$aliyunPushEmailService => config_path('aliyunPushEmailService.php')]);
     }
