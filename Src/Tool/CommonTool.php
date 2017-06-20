@@ -3,6 +3,7 @@
 namespace CjwLibrary\Src\Tool;
 
 use CjwLibrary\Src\Service\Alidayu\Alidayu;
+use CjwLibrary\Src\Service\AliyunPhpEmail\AliyunEmail;
 use Gregwar\Captcha\CaptchaBuilder;
 use Gregwar\Captcha\PhraseBuilder;
 use Illuminate\Support\Facades\Redis;
@@ -122,6 +123,72 @@ class CommonTool
         }
         Redis::del($redisKey . $telephone);
         return statusMsg(200, '手机验证码验证成功', ['redis_value' => $result]);
+    }
+
+
+    /** 邮箱验证码的生成器
+     * @param $email
+     * @param string $driver
+     * @return array
+     */
+    public function emailCodeGenerator($email, $driver = 'aliyun_email')
+    {
+        // 1. 准备参数
+        $code = $number = rand(100000, 999999);
+
+        $title = config('phpLibrary.email_code.title');
+        $title = empty($title) ? "xxx网站验证码" : $title;
+
+        $content = config('phpLibrary.email_code.content');
+        $content = empty($content) ? 'email_code_default' : $content;
+
+        $templateVariable = config('phpLibrary.email_code.template_variable');
+        $templateVariable = empty($templateVariable) ? 'code' : $templateVariable;
+
+        $redisKey = config('phpLibrary.email_code.redis_key');
+        $redisKey = empty($redisKey) ? 'email:code:' : $redisKey;
+
+        $redisTime = config('phpLibrary.email_code.redis_time');
+        $redisTime = empty($redisTime) ? 600 : $redisTime;
+
+        // 2. 发送邮件
+        $result = [];
+        if ($driver == 'aliyun_email') {
+            $aliyunEmail = new AliyunEmail();
+
+            $result = $aliyunEmail->send($email, $title, (string)view('vendor.email_code.' . $content, [$templateVariable => $code]));
+
+        } else {
+            simpleError('please select email driver !!! ', __FILE__, __LINE__);
+        }
+
+        // 3. 返回结果
+        if ($result['ServerNo'] == 200) {
+            // 3. 存入缓存
+            Redis::setEx($redisKey . $email, $redisTime, $code);
+        }
+        return $result;
+    }
+
+    /** 邮箱验证码的验证器(验证一次则被清空)
+     * @param $email
+     * @param $code
+     * @return array
+     */
+    public function emailCodeVerification($email, $code)
+    {
+        //1. 准备参数
+        $redisKey = config('phpLibrary.email_code.redis_key');
+        $redisKey = empty($redisKey) ? 'email:code:' : $redisKey;
+
+        // 2. 获取redis中数据
+        $result = Redis::get($redisKey . $email);
+
+        if (empty($result) || $result != $code) {
+            return statusMsg(400, '邮箱验证码验证失败', ['redis_value' => $result, 'code' => $code]);
+        }
+        Redis::del($redisKey . $email);
+        return statusMsg(200, '邮箱验证码验证成功', ['redis_value' => $result]);
     }
 
     /** 生成uuid

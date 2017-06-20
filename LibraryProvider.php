@@ -28,6 +28,10 @@ class LibraryProvider extends ServiceProvider
         // 4. 阿里大于的配置文件
         $StatusConfig = realpath(__DIR__ . '/Src/Service/Alidayu/Config/AlidayuSMS.php');
         $this->publishes([$StatusConfig => config_path('alidayuSMS.php')]);
+
+        // 5. 阿里云的邮件验证码模板
+        $aliyunEmailCodeTemplate = realpath(__DIR__.'/Src/Template/email_code_default.blade.php');
+        $this->publishes([$aliyunEmailCodeTemplate => base_path('resources/views/vendor/email_code/email_code_default.blade.php')]);
     }
 
     /**
