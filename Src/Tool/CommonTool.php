@@ -64,6 +64,8 @@ class CommonTool
         return $identifyingCode == $sysIdentifying ? true : false;
     }
 
+
+
     /** 生成uuid
      * @return mixed
      */

@@ -14,7 +14,7 @@ class LibaryProvider extends ServiceProvider
     public function boot()
     {
         // 状态码的配置文件
-        $StatusConfig = realpath(__DIR__ . '/Src/StatusCode/StatusConfig.php');
+        $StatusConfig = realpath(__DIR__ . '/Src/Config/StatusConfig.php');
         $this->publishes([$StatusConfig => config_path('statusCode.php')]);
 
         $aliyunPushEmailService = realpath(__DIR__ . '/Src/Service/AliyunPhpEmail/Config/aliyunPushEmailService.php');
