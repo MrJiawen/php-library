@@ -25,6 +25,7 @@ class CurlRequest
         //3. 设置cookie存放的文件夹路径
         if(!empty(config('phpLibrary.curl_request.cookie_dir')))
         $this->cookieDir =  config('phpLibrary.curl_request.cookie_dir');
+
     }
 
     //对请求的初始化

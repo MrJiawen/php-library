@@ -18,8 +18,8 @@ class LibraryProvider extends ServiceProvider
         $this->publishes([$StatusConfig => config_path('statusCode.php')]);
 
         //  项目库的配置文件
-        $StatusConfig = realpath(__DIR__ . '/Src/Config/Php_Libary.php');
-        $this->publishes([$StatusConfig => config_path('phpLibary.php')]);
+        $StatusConfig = realpath(__DIR__ . '/Src/Config/PhpLibrary.php');
+        $this->publishes([$StatusConfig => config_path('phpLibrary.php')]);
 
         // 阿里云的邮件推送配置文件
         $aliyunPushEmailService = realpath(__DIR__ . '/Src/Service/AliyunPhpEmail/Config/aliyunPushEmailService.php');
