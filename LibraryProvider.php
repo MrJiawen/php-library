@@ -4,7 +4,7 @@ namespace CjwPhpLibrary;
 
 use Illuminate\Support\ServiceProvider;
 
-class LibaryProvider extends ServiceProvider
+class LibraryProvider extends ServiceProvider
 {
     /**
      *  运行注册后的启动服务器
