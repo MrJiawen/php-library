@@ -13,17 +13,21 @@ class LibraryProvider extends ServiceProvider
      */
     public function boot()
     {
-        // 状态码的配置文件
+        // 1. 状态码的配置文件
         $StatusConfig = realpath(__DIR__ . '/Src/Config/StatusConfig.php');
         $this->publishes([$StatusConfig => config_path('statusCode.php')]);
 
-        //  项目库的配置文件
+        // 2. 项目库的配置文件
         $StatusConfig = realpath(__DIR__ . '/Src/Config/PhpLibrary.php');
         $this->publishes([$StatusConfig => config_path('phpLibrary.php')]);
 
-        // 阿里云的邮件推送配置文件
+        // 3. 阿里云的邮件推送配置文件
         $aliyunPushEmailService = realpath(__DIR__ . '/Src/Service/AliyunPhpEmail/Config/aliyunPushEmailService.php');
         $this->publishes([$aliyunPushEmailService => config_path('aliyunPushEmailService.php')]);
+
+        // 4. 阿里大于的配置文件
+        $StatusConfig = realpath(__DIR__ . '/Src/Service/Alidayu/Config/AlidayuSMS.php');
+        $this->publishes([$StatusConfig => config_path('alidayuSMS.php')]);
     }
 
     /**
