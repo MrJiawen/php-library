@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibrary\Src\Service\AliyunPhpEmail;
+namespace CjwLibrary\Src\Service\AliyunPhpEmail;
 
 use Dm\Request\V20151123 as Dm;
 

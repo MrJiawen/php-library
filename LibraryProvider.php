@@ -1,6 +1,6 @@
 <?php
 
-namespace CjwPhpLibrary;
+namespace CjwLibrary;
 
 use Illuminate\Support\ServiceProvider;
 
