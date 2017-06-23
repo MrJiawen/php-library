@@ -10,6 +10,16 @@ use CjwLibrary\Src\Tool\CurlRequest;
  */
 class IpAddress
 {
+    public $url;
+
+    public function __construct($type = 'sina')
+    {
+        $url = [
+            'taobao' => 'http://ip.taobao.com/service/getIpInfo.php?ip=213.251.162.44&qq-pf-to=pcqq.group',
+            'sina' => 'http://int.dpool.sina.com.cn/iplookup/iplookup.php'
+        ];
+        $this->url = $url[$type];
+    }
 
     /**ip的归属地查询
      * @param $ip
@@ -22,12 +32,11 @@ class IpAddress
             simpleError('please set CjwPhpLibary\Src\Tool\Common::ipAddressQuery($ip) param', __FILE__, __LINE__);
 
         $curl = new CurlRequest();
-        $url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php';
         $data = [
             'format' => 'json',
             'ip' => $ip
         ];
-        $result = $curl->CurlRequest($url, $data, 'get');
+        $result = $curl->CurlRequest($this->url, $data, 'get');
 
         $result_data = json_decode($result['data'], true);
 
@@ -41,11 +50,10 @@ class IpAddress
     {
 
         $curl = new CurlRequest();
-        $url = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php';
         $data = [
             'format' => 'json'
         ];
-        $result = $curl->CurlRequest($url, $data, 'get');
+        $result = $curl->CurlRequest($this->url, $data, 'get');
 
         $result_data = json_decode($result['data'], true);
 
