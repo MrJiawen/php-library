@@ -38,6 +38,15 @@ function toArray($obj)
     return json_decode(json_encode($obj), true);
 }
 
+/** 数组转对象
+ * @param $array
+ * @return mixed
+ */
+function toObject($array)
+{
+    return json_decode(json_encode($array));
+}
+
 
 /** 对json序列化的字符串进行添加或修改某个值
  * @param $key
@@ -80,7 +89,7 @@ function jsonString_del($key, $obj)
         if (isset($operate[$key[$i]]) && is_array($operate[$key[$i]]) && ($i != count($key) - 1)) {
             $operate = &$operate[$key[$i]];
         } else if (!isset($operate[$key[$i]]) && ($i != count($key) - 1)) {
-            simpleError('jsonString_del() param is abnormal，please check "$key" param !!!',__FILE__,__LINE__);
+            simpleError('jsonString_del() param is abnormal，please check "$key" param !!!', __FILE__, __LINE__);
         } else {
             unset($operate[$key[$i]]);
         }
@@ -88,3 +97,14 @@ function jsonString_del($key, $obj)
 
     return json_encode($obj);
 }
+
+/** 合并两个对象
+ * @param $one
+ * @param $two
+ * @return mixed
+ */
+function object_merge($one, $two)
+{
+    return toObject(array_merge(toArray($one), toArray($two)));
+}
+
