@@ -42,7 +42,7 @@ class Page
         $this->totalPage = ceil($total / $PageNum);
 
         // 4. 当前页数
-        $this->nowPage = (int)(empty($_GET['page']) ? 1 : $_GET['page']);
+        $this->nowPage = (int)(empty($_REQUEST) ? 1 : $_REQUEST);
         $this->nowPage = $this->nowPage < 1 ? 1 : $this->nowPage;
         $this->nowPage = $this->nowPage > $this->totalPage ? $this->totalPage : $this->nowPage;
 
