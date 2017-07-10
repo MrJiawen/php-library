@@ -70,7 +70,7 @@ class Page
     public function getPageParams()
     {
         return [
-            'total' => $this->totalPage,
+            'total' => $this->total,
             'nowPage' => $this->nowPage,
             'totalPage' => $this->totalPage,
             'pageNum' => $this->pageNum,
