@@ -60,6 +60,8 @@ class Page
         parse_str($queryString, $queryString);
         unset($queryString['page']);
         $this->queryString = http_build_query($queryString);
+        
+        return $this;
     }
 
     /** 获取分页的基本参数
