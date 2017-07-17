@@ -108,7 +108,7 @@ class Page
             $pageStr .= $this->constructPage($this->totalPage - 1) . $this->constructPage($this->totalPage);
         }
         $html = '
-            <nav aria-label="Page navigation text-center">
+            <nav aria-label="Page navigation" style="text-align: center;">
               <ul class="pagination">
                 <li class="' . ($this->nowPage == 1 ? 'disabled' : '') . '">
                   <a href="' . ($this->uri . '?page=' . ($this->nowPage - 1) . '&' . $this->queryString) . '" aria-label="Previous">
