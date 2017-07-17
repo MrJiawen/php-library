@@ -108,26 +108,26 @@ class Page
             $pageStr .= $this->constructPage($this->totalPage - 1) . $this->constructPage($this->totalPage);
         }
         $html = '
-            <nav aria-label="Page navigation" style="text-align: center;">
+            <nav aria-label="Page navigation" style="text-align: center;"> 
               <ul class="pagination">
                 <li class="' . ($this->nowPage == 1 ? 'disabled' : '') . '">
-                  <a href="' . ($this->uri . '?page=' . ($this->nowPage - 1) . '&' . $this->queryString) . '" aria-label="Previous">
+                  <a href="' . ($this->uri . '?page=' . ($this->nowPage - 1) . (empty($this->queryString) ? '' : '&' . $this->queryString)) . '" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
                   </a>
                 </li>
                     ' . $pageStr . '
                 <li  class="' . ($this->nowPage == $this->totalPage ? 'disabled' : '') . '">
-                  <a href="' . ($this->uri . '?page=' . ($this->nowPage + 1) . '&' . $this->queryString) . '" aria-label="Next">
+                  <a href="' . ($this->uri . '?page=' . ($this->nowPage + 1) . (empty($this->queryString) ? '' : '&' . $this->queryString)) . '" aria-label="Next">
                     <span aria-hidden="true">&raquo;</span>
                   </a>
                 </li>
               </ul>
             </nav>';
 
-        if($notice)
-        $html .=
-            '<p>
-                当前第'. $this->nowPage .'页 / 共'.$this->totalPage .'页数据 /  共 '. $this->total .'条数据
+        if ($notice)
+            $html .=
+                '<p>
+                当前第' . $this->nowPage . '页 / 共' . $this->totalPage . '页数据 /  共 ' . $this->total . '条数据
             </p>';
 
         return $html;
@@ -142,7 +142,7 @@ class Page
     {
         return
             '<li class="' . ($this->nowPage == $nowPage ? 'active' : '') . '">
-                <a href="' . ($this->uri . '?page=' . $nowPage . '&' . $this->queryString) . '">' . $nowPage . '</a>
+                <a href="' . ($this->uri . '?page=' . $nowPage . (empty($this->queryString) ? '' : '&' . $this->queryString)) . '">' . $nowPage . '</a>
             </li>';
     }
 
