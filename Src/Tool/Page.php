@@ -50,6 +50,7 @@ class Page
 
         // 5. 当前页数的偏移量
         $this->offset = $this->pageNum * ($this->nowPage - 1);
+        $this->offset = $this->offset < 0 ? 0 : $this->offset;
 
         // 6. 当前uri
         $this->uri = $uriArray[0];
