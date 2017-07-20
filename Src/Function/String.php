@@ -20,3 +20,17 @@ function str_utf8_mix_word_count($str = ""){
     $str = preg_replace(UTF8_SYMBOL_PATTERN, "", $str);
     return str_utf8_chinese_word_count($str) + str_word_count(preg_replace(UTF8_CHINESE_PATTERN, "", $str));
 }
+
+/**
+ *  将下划线命名转换为驼峰式命名
+ * @param $str
+ * @param bool $ucfirst
+ * @return mixed|string
+ * @author chenjiawen
+ */
+function convertUnderline ( $str , $ucfirst = true)
+{
+    $str = ucwords(str_replace('_', ' ', $str));
+    $str = str_replace(' ','',lcfirst($str));
+    return $ucfirst ? ucfirst($str) : $str;
+}
