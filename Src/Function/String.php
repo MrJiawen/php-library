@@ -34,3 +34,12 @@ function convertUnderline ( $str , $ucfirst = true)
     $str = str_replace(' ','',lcfirst($str));
     return $ucfirst ? ucfirst($str) : $str;
 }
+
+/** tab 转空格
+ * @param $tabNum
+ * @return string
+ */
+function tabConvertSpace($tabNum)
+{
+    return str_repeat(' ', $tabNum * 4);
+}
