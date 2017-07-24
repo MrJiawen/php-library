@@ -43,3 +43,12 @@ function tabConvertSpace($tabNum)
 {
     return str_repeat(' ', $tabNum * 4);
 }
+
+/** 数组转源码字符串
+ * @param $arr
+ * @return mixed
+ */
+function arrayToString($arr)
+{
+    return str_replace('","','", "',str_replace('":"','" => "','['.trim(json_encode($arr),'[]{}').']'));
+}
