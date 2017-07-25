@@ -98,13 +98,16 @@ function jsonString_del($key, $obj)
     return json_encode($obj);
 }
 
-/** 合并两个对象
- * @param $one
- * @param $two
- * @return mixed
+/** 合并对象
+ * @param array ...$param
+ * @return array|mixed
  */
-function object_merge($one, $two)
+function object_merge(...$param)
 {
-    return toObject(array_merge(toArray($one), toArray($two)));
+    $return = [];
+    foreach ($param as $item)
+        $return = toObject(array_merge(toArray($return), toArray($item)));
+
+    return $return;
 }
 
