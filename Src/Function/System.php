@@ -85,3 +85,22 @@ function simpleError($message, $filename, $lineno, $severity = 2, $code = 0, $pr
     }
     throw new Psy\Exception\ErrorException($message, $code, $severity, $filename, $lineno, $previous);
 }
+
+/**
+ * 修改或添加请求参数
+ * @param array $param
+ * @return string
+ */
+function updateRequestParam(array $param)
+{
+    // 进行切割requestString
+    $uriArray = explode('?', $_SERVER['REQUEST_URI']);
+
+    // 得到请求参数
+    array_shift($uriArray);
+    $queryString = implode('?', $uriArray);
+    parse_str($queryString, $queryString);
+    $queryString = array_merge($queryString, $param);
+
+    return http_build_query($queryString);
+}
