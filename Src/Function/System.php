@@ -104,3 +104,31 @@ function updateRequestParam(array $param)
 
     return http_build_query($queryString);
 }
+
+/**
+ * 递归删除文件
+ * @param $path
+ * @param bool $delDir
+ * @return bool
+ */
+function delDirAndFile($path, $delDir = FALSE)
+{
+    $handle = opendir($path);
+    if ($handle) {
+        while (false !== ($item = readdir($handle))) {
+            if ($item != "." && $item != "..") {
+                $result = is_dir("$path/$item") ? delDirAndFile("$path/$item", true) : unlink("$path/$item");
+                if (empty($result)) {
+                    closedir($handle);
+                    return false;
+                }
+            }
+        }
+        closedir($handle);
+
+        return $delDir ? rmdir($path) : true;
+    } else {
+
+        return file_exists($path) ? unlink($path) : false;
+    }
+}
