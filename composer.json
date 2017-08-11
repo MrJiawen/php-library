@@ -10,16 +10,12 @@
   "require": {
     "gregwar/captcha": "1.*",
     "ramsey/uuid": "^3.2",
-    "predis/predis": "~1.0"
+    "predis/predis": "~1.0",
+    "mr-jiawen/php-function": "^1.0"
   },
   "autoload": {
     "psr-4": {
       "CjwLibrary\\": ""
-    },
-    "files": [
-      "Src/Function/Array.php",
-      "Src/Function/String.php",
-      "Src/Function/System.php"
-    ]
+    }
   }
 }
