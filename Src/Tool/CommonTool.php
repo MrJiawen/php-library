@@ -91,9 +91,8 @@ class CommonTool
         $alidayu = new Alidayu($SMSConfig);
         $result = $alidayu->sendMessage($telephone, [$templateVariable => $code]);
 
-        if (!empty($result->result) &&
-            !empty($result->result->code) &&
-            $result->result->code == "OK"
+        if ($result->Message == 'OK' &&
+            $result->Code == "OK"
         ) {
             // 3. 存入缓存
             Redis::setEx($redisKey . $telephone, $redisTime, $code);
